@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css animation</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+    }
+
+    body {
+        background-color: #000;
+        margin: 0;
+        padding: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        /* İçindeki kutulari esnek (flex) düzende hizalar */
+        flex-direction: column;
+        /* Kutulari alt alta (sütun şeklinde) siralar */
+        gap: 20px;
+        /* Kutular arasina 20px boşluk birakir */
+    }
+
+    .box {
+        width: 220px;
+        /* Kutunun başlangiç genişligi */
+        height: 120px;
+        /* Kutunun yüksekligi */
+        background-color: red;
+        /* Başlangiç rengi */
+        color: #fff;
+        /* Yazi rengi */
+        display: flex;
+        /* Yaziyi ortalamak için flex kullanimi */
+        align-items: center;
+        /* Dikeyde ortalar */
+        justify-content: center;
+        /* Yatayda ortalar */
+        border-radius: 10px;
+        /* Köşeleri yumuşatir */
+        transition-duration: 3s;
+        /* Geçişin toplam süresi */
+    }
+
+    .ease-in {
+        transition-timing-function: ease-in;
+        /* Yavaş başlayip hizlanan geçiş */
+    }
+
+    .ease-out {
+        transition-timing-function: ease-out;
+        /* Hizli başlayip yavaşlayan geçiş */
+    }
+
+    .ease-in-out {
+        transition-timing-function: ease-in-out;
+        /* Başta ve sonda yavaş, ortada hizli geçiş */
+    }
+
+    .box:hover {
+        width: 700px;
+        /* Hover olunca genişler */
+        background-color: blue;
+        /* Hover olunca renk değişir */
+    }
+
+    /*      Transition END         */
+
+
+    /*      Transform START       */
+
+    .container2 {
+        background-color: aquamarine;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+        width: 200px;
+        margin-top: 50px;
+        transition: transform 0.5s ease;
+        /* Transform hareketini 0.5 saniyede yumuşak geçişle uygular */
+
+    }
+
+    .container2:hover {
+        transform: rotate(45deg);
+        /* Hover olunca 45 derece döner  */
+        
+        /* Transform geçişi 0.5 saniye sürer ve ease zamanlama fonksiyonu kullanir */
+    }
+
+    .container3 {
+        background-color: orange;
+        /* Kutunun arka plan rengini belirler */
+        display: flex;
+        /* İçerigi flex düzeninde hizalamayi sağlar */
+        align-items: center;
+        /* Yaziyi dikeyde ortalar */
+        justify-content: center;
+        /* Yaziyi yatayda ortalar */
+        height: 100px;
+        /* Kutunun yüksekligini ayarlar */
+        width: 300px;
+        /* Kutunun genişligini ayarlar */
+        margin-top: 50px;
+        /* Üstten boşluk birakir */
+        transition: transform 2s ease;
+        /* Translate hareketini 0.5 saniyede yumuşak geçişle uygular */
+    }
+
+    .container3:hover {
+        transform: translateX(100px);
+        /* Hover olunca kutuyu X ekseninde -100px öteler */
+    }
+
+    /*      Transform END        */
+
+    /*      Animation START       */
+    .container4 {
+        width: 200px;
+        height: 200px;
+        background-color: purple;
+        animation-name: Kutu;
+        animation-duration: 2s;
+        margin-top: 50px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        color: white;
+        animation-iteration-count: 4;
+        /* Animasyonun 4 kez tekrarlanmasini sağlar */
+    }
+
+    @keyframes Kutu {
+        to {
+            width: 400px;
+        }
+
+    }
+
+    .container5 {
+        width: 200px;
+        /* Kutunun genişligi 200px */
+        height: 200px;
+        /* Kutunun yüksekligi 200px */
+        background-color: teal;
+        /* Kutunun arka plan rengi */
+        margin-top: 50px;
+        /* Üstten boşluk birakir */
+        display: flex;
+        /* Yaziyi ortalamak için flex kullanimi */
+        align-items: center;
+        /* Yaziyi dikeyde ortalar */
+        justify-content: center;
+        /* Yaziyi yatayda ortalar */
+        color: white;
+        animation: Kutu5Hareket 4s ease-in-out 1;
+        /* 4 saniyelik animasyon sadece 1 kez çalişir */
+    }
+
+    @keyframes Kutu5Hareket {
+        0% {
+            transform: translate(0, 0);
+            /* Başlangiç noktasi */
+        }
+
+        33% {
+            transform: translateX(500px);
+            /* Önce 500px sağa hareket eder */
+        }
+
+        66% {
+            transform: translate(500px, -500px);
+            /* Sonra ayni noktadan 500px yukari çikar */
+        }
+
+        100% {
+            transform: translate(0, 0);
+            /* Tekrar başlangiç noktasina geri gelir */
+        }
+    }
+
+
+    /*      Animation END      */
+</style>
+
+<body>
+    <div class="container">
+        <div class="box ease-in">ease-in: Yavaş başlayip hizlanan geçiş</div>
+        <div class="box ease-out">ease-out: Hizli başlayip yavaşlayan geçiş</div>
+        <div class="box ease-in-out">ease-in-out: Başta ve sonda yavaş, ortada hizli geçiş</div>
+    </div>
+
+    <div class="container2">
+        transform rotate örnegi
+
+    </div>
+
+    <div class="container3">
+        transform:translate örnegi sağa soğru 100x
+    </div>
+
+    <div class="container4">
+        Animation örnegi 4 kez 400px genişlige kadar büyüyecek
+    </div>
+
+    <div class="container5">
+        container5: sağa 500px, yukari 500px, geri dön
+    </div>
+</body>
+
+</html>
